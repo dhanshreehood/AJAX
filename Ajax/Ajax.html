@@ -1,0 +1,43 @@
+<!-- for List users -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="MyButton">Click to get help HTML</button>
+    <div id="OutputDiv"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#MyButton").click(function () {
+                $.ajax({
+                    url: "https://reqres.in/api/users",
+                    type: "post",
+                    data: {
+                        "name": "Dhanshree",
+                        "job": "Trainee"
+                    },
+                    success: function (data, status, xhr) {
+                        $('#OutputDiv').text(JSON.stringify(data));
+                        // console.log("status : " +status);
+                        // console.log(xhr.statusText);
+                    },
+                    dataType: "json",
+                    error: function (error) {
+                        alert("Error in getting");
+                    }
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>
